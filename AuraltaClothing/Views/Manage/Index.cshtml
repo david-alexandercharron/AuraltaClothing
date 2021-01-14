@@ -1,0 +1,152 @@
+﻿@model AuraltaClothing.ViewModels.Manage.AccountVM
+@{
+    ViewBag.Title = "Manage";
+}
+
+
+<div class="pt-5 pb-5">
+    <div class="form-box">
+        <input type="radio" id="account" name="tab-control" checked>
+        <input type="radio" id="orders" name="tab-control">
+
+        <ul>
+            <li title="Account Settings">
+                <label for="account" role="button">
+                    <i class="fas fa-user-cog"></i><br><span>&nbsp;Account Settings</span>
+                </label>
+            </li>
+            <li title="My Orders">
+                <label for="orders" role="button">
+                    <i class="fas fa-shopping-basket"></i><br><span>&nbsp;My Orders</span>
+                </label>
+            </li>
+        </ul>
+
+        <div class="slider">
+            <div class="indicator"></div>
+        </div>
+
+
+        
+
+        <!-- Alert message -->
+        @if (!Html.ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger col-12" role="alert">
+                @Html.ValidationMessage("")
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success col-12" role="alert">
+                @ViewBag.Message
+            </div>
+        }
+
+
+
+        <div class="content">
+            <section>
+                <h2>Account Settings</h2>
+                <!-- Register form -->
+                @using (Html.BeginForm("Save", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "registerForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.HasPassword)
+
+                    <!-- First Name -->
+                    <div class="form-group row login-input-form">
+                        <div class="col-6">
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "First name" })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-6">
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "Last name" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group row login-input-form">
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg flat-input col-12 ", @placeholder = "Email", @readonly = true })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    if (Model.HasPassword)
+                    {
+                        <!-- Old Password -->
+                        <div class="form-group row login-input-form">
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control form-control-lg flat-input col-12 ", @placeholder = "Current password" })
+                                @Html.ValidationMessageFor(m => m.OldPassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- New Password -->
+                        <div class="form-group row login-input-form">
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control form-control-lg flat-input col-12 ", @placeholder = "New password" })
+                                @Html.ValidationMessageFor(m => m.NewPassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- New Password Confirmation -->
+                        <div class="form-group row login-input-form">
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control form-control-lg flat-input col-12 ", @placeholder = "Confirm new password" })
+                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+
+
+                    <!-- Save -->
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input id="registerButton" type="submit" value="Save" class="btn btn-lg btn-block btn-secondary btn-login col-12" />
+                        </div>
+                    </div>
+
+                }
+
+
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "pt-5 text-center" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <a class="btn btn-dark" href="javascript:document.getElementById('logoutForm').submit()">Log out &nbsp;<i class="fas fa-sign-out-alt"></i></a>
+                }
+            </section>
+            <section>
+                <h2>My Orders</h2>
+
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    @Styles.Render("~/Content/Manage/Manage.css")
+    @Styles.Render("~/Content/Custom/CustomFormBox.css")
+    @Styles.Render("~/Content/FormValidation/FormValidation.css")
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        
+    $(document).ready(function () {
+        // Show the success message if there is a message to be shown
+        if (!$('.alert').text().trim() == "") {
+            $('.alert').fadeIn();
+            setTimeout(() => { $('.alert').fadeOut(); }, 3000);
+        }
+    });
+    </script>
+
+}

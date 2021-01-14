@@ -1,0 +1,173 @@
+﻿
+@using AuraltaClothing.ViewModels.ShoppingCart
+@model CheckoutVM
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string noscroll = Model.Products.Count > 3 ? "" : "noscroll";
+}
+
+
+<div class="container checkout-container mb-5">
+    <div class="checkout">
+        <div class="order">
+            <h2>Checkout</h2>
+            <h5>Order #0101</h5>
+            <ul class="@noscroll order-list ">
+                @foreach (var item in Model.Products)
+                {
+                    <li><img src="@item.Product.GeneralImagePath" alt="Alternate Text" /><h4>@item.Product.Name</h4><h5>@item.Quantity x $@AuraltaClothing.Services.PriceService.GetPrice(item.Product, Model.CurrencyCode)</h5></li>
+                }
+
+
+            </ul>
+            <h5>Shipping</h5><h4 class="price shipping-price">$ 9.50</h4>
+            <h5 class="total">Subtotal</h5><h1 class="price total-price">$ @Model.Total</h1>
+        </div>
+
+        <!-- Shipping Address-->
+        @using (Html.BeginForm("PaymentWithPaypal", "ShoppingCart", FormMethod.Post, new { id = "shipping-form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="shipping-address">
+                <h2>Shipping Address</h2>
+
+                <!-- Street Address -->
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(m => m.line1, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "Street Address", type="" })
+                        @Html.ValidationMessageFor(m => m.line1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Postal Code -->
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        @*<input class="form-control form-control-lg flat-input col-12 mt-4" id="PostalCode" name="PostalCode" placeholder="Postal Code">*@
+                        @Html.TextBoxFor(m => m.postal_code, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "Postal Code", type = "", onchange = "calculateShipping()", onkeypress = "calculateShipping()" })
+                        @Html.ValidationMessageFor(m => m.postal_code, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+
+                    <!-- City -->
+                    <div class="col-md-6">
+                        @*<input class="form-control form-control-lg flat-input col-12 mt-4" id="City" name="City" placeholder="City">*@
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "City", type = "", onkeypress = "test()" })
+                        @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- State -->
+                    <div class="col-md-6">
+                        @*<input class="form-control form-control-lg flat-input col-12 mt-4" id="State" name="State" placeholder="State">*@
+                        @Html.TextBoxFor(m => m.state, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "State", type = "", onkeypress = "test()" })
+                        @Html.ValidationMessageFor(m => m.state, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <h5 class="add-mobile">Shipping</h5><h4 class="price shipping-price add-mobile">$ 9.50</h4>
+                <h5 class="total add-mobile">Total</h5><h1 class="price add-mobile">$ @Model.Total</h1>
+
+                <div class="form-group row pt-5">
+                    
+                    <div class="col-md-12">
+                        <button id="shipping-submit-btn" class="text-white purchase-btn btn btn-lg btn-block btn-secondary">PURCHASE</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+
+
+
+
+
+
+@section Scripts {
+    @Styles.Render("~/Content/ShoppingCart/Checkout.css")
+    @Styles.Render("~/Content/FormValidation/FormValidation.css")
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        
+
+        $(document).ready(function () {
+
+            // used toFixed(2) in ajax call
+            if ($('.price').html().split('.')[1].length == 1) {
+                $('.price').text($('.price').html() + '0');
+                $('.price').text('$ 9.50');
+            }
+
+            $('#shipping-submit-btn').click(adjustShippingFormHeight);
+            $('input').change(function () { $('#shipping-form').valid(); });
+            
+        });
+
+        function calculateShipping() {
+
+            if ($("#postal_code").valid() == true) {
+                $.ajax({
+                    url: '../ShoppingCart/CalculateShipping',
+                    type: 'POST',
+                    data: {
+                        postalCode: $('#postal_code').val(),
+                    }
+                })
+                .done(function (o) {
+                    console.log(o);
+                    if (!o.error) {
+                        $('.shipping-price').text('$' + o.price.toFixed(2))
+                        //$('.total-price').text('$' + o.total.toFixed(2))
+                    } else {
+                        // Get the errors of the postal code
+                        var errors = $('#postal_code').siblings()[0];
+
+                        if (errors.children.length == 0) {
+                            // Create a span error
+                            var spanError = document.createElement("span");
+                            spanError.innerText = o.error;
+                            spanError.id = 'postal_code-error';
+
+                            // Add the error to the form
+                            $('#postal_code').siblings()[0].append(spanError);
+                        }
+                    }
+
+                })
+                .fail(function () {
+                    $('.shipping-price').html('<i class="fas fa-spinner fa-spin"></i>');
+                });
+            } else {
+                $('.shipping-price').html('<i class="fas fa-spinner fa-spin"></i>');
+            }
+
+            
+        }
+
+        /* This function needs to be generalized with the one in Login.js */ 
+        function adjustShippingFormHeight() {
+            $('#shipping-form').valid()
+            var heightToAdd = 0;
+
+            $('#shipping-form').find('.field-validation-error').each(function () {
+                heightToAdd += $(this).height();
+            });
+
+            // On phone screens, padding right and left 15px will be applied, instead of left
+            if (screen.width <= 414) {
+                $('.checkout-container, .checkout, .order').css('height', 675 + heightToAdd + "px");
+            } else {
+                $('.checkout-container, .checkout, .order').css('height', 500 + heightToAdd + "px");
+            }
+
+        }
+    </script>
+}

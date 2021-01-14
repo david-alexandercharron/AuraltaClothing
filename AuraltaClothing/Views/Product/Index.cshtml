@@ -1,0 +1,131 @@
+﻿
+@using AuraltaClothing.Enums
+@using AuraltaClothing.ViewModels.Products
+@model ProductVM
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding-top: 30px; padding-bottom: 30px">
+    <div class="row">
+
+        <h1 class="text-center add-mobile section-title">@Model.Product.Name</h1>
+        <div class="col-sm-4 offset-sm-2 col-12">
+            <img class="product-img" src="@Model.Product.GeneralImagePath" alt="@Model.Product.Name" />
+        </div>
+        <div class="col-sm-6 col-12">
+
+            @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post))
+            {
+
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Product.ProductId);
+
+                <h1 class="rm-mobile product-name">@Model.Product.Name</h1>
+                <h3 class="text-secondary tx-included">$@AuraltaClothing.Services.PriceService.GetPrice(Model.Product, Model.CurrencyCode)</h3>
+                <div class="rm-mobile mt-3 mb-3">@Html.Raw(Model.Product.Description)</div>
+
+                <div class="size-container">
+                    <label class="radio-btn-container">
+                        @Html.RadioButtonFor(m => m.Size, ProductSize.XS, new { @id = "XS" })
+                        <span class="checkmark">XS</span>
+                    </label>
+                    <label class="radio-btn-container">
+                        @Html.RadioButtonFor(m => m.Size, ProductSize.S, new { @id = "S" })
+                        <span class="checkmark">S</span>
+                    </label>
+                    <label class="radio-btn-container">
+                        @Html.RadioButtonFor(m => m.Size, ProductSize.M, new { @id = "M" })
+                        <span class="checkmark">M</span>
+                    </label>
+                    <label class="radio-btn-container">
+                        @Html.RadioButtonFor(m => m.Size, ProductSize.L, new { @id = "L" })
+                        <span class="checkmark">L</span>
+                    </label>
+                    <label class="radio-btn-container">
+                        @Html.RadioButtonFor(m => m.Size, ProductSize.XL, new { @id = "XL" })
+                        <span class="checkmark">XL</span>
+                    </label>
+                    <label class="radio-btn-container">
+                        @Html.RadioButtonFor(m => m.Size, ProductSize.XXL, new { @id = "XXL" })
+                        <span class="checkmark">XXL</span>
+                    </label>
+                </div>
+
+                <!-- Quantity -->
+                @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
+                <div class="col-sm-3 col-12 pl-0">
+                    <div class="cart-product-quantity-grid">
+                        <button class="cart-product-btn cart-product-quantity-btn cart-product-quantity-column product-subtract" type="button">&minus;</button>
+                        @Html.TextBoxFor(m => m.Quantity, new { @class = "cart-product-quantity-column product-qty", Value = 1, type = "number" })
+                        <button class="cart-product-btn cart-product-quantity-btn cart-product-quantity-column product-plus" type="button">&plus;</button>
+                    </div>
+                </div>
+
+                <button class="button buy-button mt-3 btn">
+                    <span class="icon is-small">
+                        <i class="fas fa-shopping-bag"></i>
+                    </span>
+                    <span>&nbsp;ADD TO CART</span>
+                </button>
+                <div class="mt-1 add-mobile text-left">@Html.Raw(Model.Product.Description)</div>
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+
+    @Styles.Render("~/Content/ShoppingCart/ShoppingCartPage.css")
+    @Styles.Render("~/Content/Men/ProductPage.css")
+    @Styles.Render("~/Content/Custom/CustomRadioButton.css")
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
+    <script>
+
+        // When the page is fully loaded
+        $(document).ready(function () {
+
+            //Change the hidden id object propery name to ProductId for the POST viewmodel (was Product.ProductId)
+            $('#Product_ProductId').attr('name', 'ProductId');
+
+            // Product quantity event
+            $('.product-subtract, .product-plus').click(function () {
+
+                // Decrement
+                if ($(this).hasClass('product-subtract')) {
+
+                    if (document.getElementById("Quantity").value > 1) {
+                        document.getElementById("Quantity").value--;
+                    } else {
+                        $("Quantity").set('value', 1);
+                    }
+
+                    // Increment
+                } else {
+                    document.getElementById("Quantity").value++;
+                }
+
+                // Remove the blur from the button after clicking on it
+                var button = $(this);
+                setTimeout(function () { button.blur(); }, 100);
+
+            })
+
+        });
+
+    </script>
+
+}

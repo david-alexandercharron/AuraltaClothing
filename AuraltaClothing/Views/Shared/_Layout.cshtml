@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auralta Clothing - @ViewBag.Title</title>
+    <link rel="shortcut icon" href="~/Images/AuraltaClothingIcon.png" />
+
+    @Scripts.Render("~/Content/Javascript/FontAwesome5/FontAwesome5.js")
+    <!-- For Font Awesome quick load -->
+    <script type="text/javascript">(function () { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })();</script>
+
+    <!-- Poppins Google Font -->
+    @*<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600;1,800&display=swap" rel="stylesheet">*@
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,600;1,800&display=swap" rel="stylesheet">
+
+
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <header class="container">
+
+        <div>
+            <!-- Auralta Logo -->
+            <a href="/">
+                <img class="header-logo" src="~/Images/AuraltaClothingLogo.png" alt="Auralta Clothing" />
+            </a>
+        </div>
+
+        <div class="align-vertical d-none d-sm-flex">
+            <!-- Country -->
+            <div class="wrapper mr-2 country-holder">
+                <a class="country CAD" href="javascript:void(0);" currencyCode="CAD" countryCode="CA"><span><span></span></span></a>
+            </div>
+
+            <!-- Shopping Cart-->
+            <h5 class="mr-3"><a href="/ShoppingCart" title="Shopping Cart"><i class="fa fa-shopping-cart text-dark"></i></a></h5>
+
+            <!-- Account -->
+            <h5><a href="/Account/Login" title="@(User.Identity.IsAuthenticated ? "Account" : "Login")"><i class="far fa-user text-dark"></i></a></h5>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Choose your currency</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="currency-dropdown" style="width: 250px">
+                            <div class="selected-item"><a class="country CAD" href="javascript:void(0);"></a> CAD</div>
+                            <ul>
+                                <li class="input-option" data-value="1">
+                                    <div class="country CAD" currencyCode="CAD" countryCode="CA"></div> CAD
+                                </li>
+                                <li class="input-option" data-value="2">
+                                    <div class="country USD" currencyCode="USD" countryCode="US"></div> USD
+                                </li>
+                            </ul>
+                            <input type="hidden" class="option" name="namesubmit" value="" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-save" data-dismiss="modal">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-md navbar-light sticky-top border-top border-bottom">
+        <div class="container">
+
+            <!-- Hamburger Menu -->
+            <button id="hamburger" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="mobile-shop-login-container" class="align-vertical ">
+                <!-- Country -->
+                <div class="wrapper mr-2 country-holder">
+                    <a class="country CAD" href="javascript:void(0);" currencyCode="CAD" countryCode="CA"><span><span></span></span></a>
+                </div>
+
+                <!-- Shopping Cart-->
+                <h5 class="mr-3"> <a href="/ShoppingCart" title="Shopping Cart"><i class="fa fa-shopping-cart text-dark"></i></a></h5>
+
+                <!-- Account -->
+                <h5> <a href="/Account/Login" title="@(User.Identity.IsAuthenticated ? "Account" : "Login")"><i class="far fa-user text-dark"></i></a></h5>
+            </div>
+
+            <div class="navbar-collapse collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="nav navbar-nav">
+
+                    <li><a class="nav-link mr-3" href="/"><strong>HOME</strong></a></li>
+                    <li><a class="nav-link mr-3" href="/Women/Category"><strong>WOMEN</strong></a></li>
+                    <li><a class="nav-link mr-3" href="/Men/Category"><strong>MEN</strong></a></li>
+                    <li><a class="nav-link mr-3" href="/Home/Contact"><strong>CONTACT</strong></a></li>
+                    <li><a class="nav-link" href="/Home/About"><strong>ABOUT US</strong></a></li>
+
+                    @if (User.IsInRole(AuraltaClothing.Roles.Admin))
+                    {
+                        <li><a class="nav-link" href="/Administration"><strong>ADMINISTRATION</strong></a></li>
+                    }
+                </ul>
+
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+
+        </div>
+    </nav>
+    <div class="container-fluid bg-light body-content">
+        @RenderBody()
+        <footer class="row text-white">
+            <div class="container">
+                <div class="row mt-5">
+
+                    <!-- Quick Links-->
+                    <div class="col-10">
+                        <p><a href="/" class="text-white">Home</a></p>
+                        <p><a href="/Women/Category" class="text-white">Women</a></p>
+                        <p><a href="/Men/Category" class="text-white">Men</a></p>
+                        <p><a href="/Home/Contact" class="text-white">Contact</a></p>
+                        <p><a href="/Home/About" class="text-white">About us</a></p>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <p><a href="/Home/About" class="text-white">Administration</a></p>
+                        }
+                    </div>
+
+                    <!-- Follow us -->
+                    <div class="col-2">
+                        <div class="text-center">
+                            <h3 class="follow-us-title">Follow us</h3>
+                            <div>
+                                <a href="https://www.facebook.com/Auralta-Clothing-125747338824060/" class="fab fa-facebook-f followus-icon" target="_blank"></a>
+                                <a href="https://twitter.com/auralta" class="fab fa-twitter followus-icon" target="_blank"></a>
+                                <a href="https://www.instagram.com/auraltaclothing/" class="fab fa-instagram followus-icon" target="_blank"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid" style="padding: 0">
+                <hr class="hr-footer" />
+            </div>
+
+            <div class="container">
+                <p>&copy; 2020 - Auralta Clothing</p>
+                
+
+            </div>
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/Javascript/Animations.js")
+    @Scripts.Render("~/Scripts/Javascript/Currency/CurrencySelector.js")
+
+    @Styles.Render("~/Content/Animations/Animations.css")
+    @Styles.Render("~/Content/Fonts/fonts.css")
+
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>
+

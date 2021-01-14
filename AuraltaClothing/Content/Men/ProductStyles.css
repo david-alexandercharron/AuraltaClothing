@@ -1,0 +1,92 @@
+﻿
+/* Each product */
+.product-tile {
+    padding: 5px;
+    margin-bottom: 4.5%;
+
+}
+
+.product-img{
+    width: 300px;
+}
+
+.product-name {
+    padding-top: 1rem;
+    margin-bottom: 0;
+    color: #000;
+}
+
+.product-price {
+    color: grey;
+}
+
+/* Remove underline */
+.product-link:hover {
+    text-decoration: none;
+}
+
+.product-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -40%);
+    background: #808080;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    font-weight: 800;
+    display: inline-block;
+    transition: all .15s ease-in;
+}
+
+.product-button:hover {
+    background: #404040;
+}
+
+/* Add shadow effect to overlay class on product-tile hover */
+.product-tile:hover .overlay {
+    opacity: .1;
+}
+
+.product-tile:hover .product-button {
+    opacity: 1;
+    transform: translate(-50%, -80%);
+}
+
+
+
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #1a1a1a;
+    opacity: 0;
+    transition: all .15s ease-in;
+}
+
+
+
+/* Equivalent of col-lg */
+@media only screen and (min-width: 992px) {
+    .product-tile {
+        /* 3% will be on margin */
+        -ms-flex: 0 0 30.333333%;
+        flex: 0 0 30.333333%;
+        max-width: 30.333333%;
+        margin-left: 4.5%;
+        
+    }
+
+    /* Equal the margin for the first and every fourth product */
+    .product-tile:nth-child(1),
+    .product-tile:nth-child(3n+1){
+        margin-left: 0;
+    }
+
+}

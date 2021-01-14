@@ -1,0 +1,82 @@
+﻿
+@using AuraltaClothing.ViewModels.Products
+@model ProductsVM
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@switch (@Model.Category)
+{
+    case AuraltaClothing.Enums.ProductCategory.Hoodie:
+        <h1 class="text-center pt-5 pb-5 section-title">Hoodies</h1>
+        break;
+    case AuraltaClothing.Enums.ProductCategory.TShirt:
+        <h1 class="text-center pt-5 pb-5 section-title">T-Shirts</h1>
+        break;
+    case AuraltaClothing.Enums.ProductCategory.LongSleeve:
+        <h1 class="text-center pt-5 pb-5 section-title">Long Sleeves</h1>
+        break;
+    case AuraltaClothing.Enums.ProductCategory.PocketTShirt:
+        <h1 class="text-center pt-5 pb-5 section-title">Pocket T-Shirts</h1>
+        break;
+    default:
+        break;
+}
+
+
+<div class="container">
+
+    <div class="row">
+
+        @foreach (AuraltaClothing.Models.Product p in Model.Products)
+        {
+
+            <div class="col-sm-12 col-lg-4 product-tile slideanim" style="z-index: 5">
+                <a href="/Product?id=@p.ProductId" class="product-link">
+
+                    <!-- Opacity effect and view button -->
+                    <div class="overlay" @*onmouseover="hover(this);"*@ onmouseout="unhover(this);"></div>
+                    <div class="product-button">view</div>
+
+                    <img src="@p.GeneralImagePath" alt="@p.Name" class="product-img rounded mx-auto d-block" />
+                    <p class="text-center product-name"><strong>@p.Name</strong></p>
+                    <p class="text-center product-price mb-0"><strong>$@AuraltaClothing.Services.PriceService.GetPrice(p, Model.CurrencyCode)</strong></p>
+                    <p class="text-center tx-included text-dark"></p>
+                </a>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+
+
+
+@section Scripts {
+
+    @Styles.Render("~/Content/Men/ProductStyles.css")
+
+    <script>
+
+        function hover(element) {
+            // The image to be replaced with, has -hover at the end of it's name
+            var img = $(element).siblings('.product-img');
+            img.attr('src', img.attr('src').replace('.', '-hover.'));
+        }
+
+        function unhover(element) {
+            // The image to be replaced with, doesn't have -hover at the end of it's name
+            var img = $(element).siblings('.product-img');
+            img.attr('src', img.attr('src').replace('-hover.', '.'));
+        }
+
+    </script>
+
+}
+
+
+

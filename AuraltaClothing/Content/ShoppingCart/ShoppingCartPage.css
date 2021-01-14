@@ -1,0 +1,166 @@
+﻿
+
+/*** Product Container ***/
+.cart-product-container {
+
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/*** Product Image (Dimensions, same line as other properties) ***/
+.cart-product-image {
+    width: 150px;
+    height: 200px;
+    display: inline-block;
+}
+
+
+/*** Product Name ***/
+/* Remove 'a' element properties and make it inherit (remove underline) */
+.cart-product-name-container {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.cart-product-name:hover {
+    color: grey;
+}
+
+
+
+/*** Product Quantity ***/
+.cart-product-quantity-grid {
+    display: inline-block;
+    padding-top: 80px;
+    text-align: justify !important;
+    text-justify: distribute-all-lines;
+    font-size: 0 !important;
+    text-rendering: optimizespeed;
+}
+
+.cart-product-quantity-column {
+    display: inline-block;
+    vertical-align: top;
+    font-size: medium;
+    text-align: left;
+    text-rendering: optimizeLegibility;
+}
+
+.cart-product-quantity-btn {
+    display: inline-block;
+    background-color: #bdc3c7;
+    border: none;
+    padding: .5em .75em;
+    text-align: center;
+    font-weight: 300;
+}
+
+/* - button */
+.product-subtract {
+    border-radius: 50px 0px 0px 50px;
+}
+
+/* + button */
+.product-plus {
+    border-radius: 0 50px 50px 0;
+}
+
+.product-subtract, .product-plus, .product-qty {
+    background-color: #efefef;
+    height: 40px;
+    width: 33.330557%;
+    color: #686868;
+    text-align: center;
+}
+
+.product-qty {
+    padding: .35em .75em;
+}
+
+
+
+
+/*** Remove Product Button ***/
+.remove-btn-container {
+    padding-top: 80px;
+}
+
+.remove-btn {
+    padding: 0.375rem 0.75rem;
+    vertical-align: middle;
+}
+
+
+
+/* Hover effects for product quantity buttons and the product remove button */
+.cart-product-quantity-btn:hover, .remove-btn:hover {
+    background-color: #e2e6ea;
+    color: black;
+}
+
+
+
+
+/* Generalize styles for the product quantity buttons and remove buttons */
+.cart-product-btn {
+    display: inline-block;
+    background-color: #efefef;
+    border: #efefef
+}
+
+/* Shadow effect on focus */
+.cart-product-btn:focus {
+    color: #212529;
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+    box-shadow: 0 0 0 0.2rem rgba(216, 217, 219, 0.5);
+    outline: 0;
+}
+
+
+/*** Product Price ***/
+.cart-product-price {
+    display: inline-block;
+    padding: .35em .75em;
+    padding-top: 85.6px;
+}
+
+/* Responsive design for the mobile and desktop version */
+@media only screen and (max-width: 500px) {
+
+    /*** ** */
+    /* On mobile version, give the product images full width */
+    .cart-product-image{
+        width: 100%;
+        height: auto;
+    }
+
+    /* Center the text */
+    .cart-product-container{
+        text-align: center;
+    }
+
+    /* Remove the margin from .mt-5 and change font-size for nicer look */
+    .cart-product-name, .cart-product-price {
+        margin-top: 0px !important;
+        font-size: 1rem;
+    }
+
+    /* Remove the padding-top from the quantity grid */
+    .cart-product-quantity-grid{
+        padding-top: 0px;
+    }
+
+    /* Give less padding to the product-price */
+    .cart-product-price{
+        padding-top: 15px;
+    }
+
+    /* Give less padding to the product-price */
+    .remove-btn-container {
+        padding-top: 0px;
+        padding-bottom: 15px;
+    }
+}

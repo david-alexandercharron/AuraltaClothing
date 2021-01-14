@@ -1,0 +1,93 @@
+﻿
+
+
+/* Styling for the product name */
+.product-name {
+    font-family: MontHeavyDemo;
+}
+
+/* The image will always take a width of 300px */
+.product-img {
+    width: 300px;
+}
+
+/* Remove the border radius of the button */
+.button {
+    width: 50%;
+    border-radius: 1rem;
+}
+
+.buy-button {
+    font-family: 'Open Sans';
+    background: gray;
+    color: white;
+    border: none;
+}
+
+.buy-button:hover, .buy-button:active, .buy-button:focus {
+  color: white;
+  opacity: 0.9;
+}
+
+
+/* Hide arrows from Input Number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.product-qty {
+    border: 0;
+}
+
+/* By default remove mobile elements */
+.add-mobile {
+    display: none;
+}
+
+/* Container for the size*/
+.size-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Responsive design for the mobile and desktop version */
+@media only screen and (max-width: 500px) {
+
+    /* Display add-mobile classes on mobile version */
+    .add-mobile{
+        display: block;
+    }
+
+    /* Hide rm-mobile classes on mobile version */
+    .rm-mobile {
+        display: none;
+    }
+
+    /* Give the button more width for mobile version */
+    .button {
+        width: 100%;
+    }
+
+    /* Align everything in the form to the center */
+    form {
+        text-align: center !important;
+    }
+
+    /* The image will be 100% on mobile */
+    .product-img {
+        width: 100%;
+    }
+
+    .size-container{
+        margin: auto;
+    }
+
+}
+

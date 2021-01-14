@@ -1,0 +1,96 @@
+﻿
+/* CSS for every category container */
+.hoodie-container {
+    height: 100%;
+    width: 98%;
+    position: relative;
+    overflow: hidden;
+}
+
+.tshirt-container {
+    height: 98%;
+    width: 98%;
+    position: relative;
+    overflow: hidden;
+}
+
+.pockettshirt-container {
+    height: 98%;
+    width: 98%;
+    position: relative;
+    overflow: hidden;
+}
+
+.longsleeve-container {
+    height: 100%;
+    width: 99%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* CSS for the category sections on the category page */
+/* MEN */
+.men-category-hoodie-section::before {
+    background-image: url(/Images/Website/Category/Men/men-hoodie.png);
+}
+
+.men-category-tshirt-section::before {
+    background-image: url('/Images/Website/Category/Men/T-shirt men.jpg');
+}
+
+.men-category-pockettshirt-section::before {
+    background-image: url(/Images/Website/Category/Men/men-pocket-t-shirt.png);
+}
+
+.men-category-longsleeve-section::before {
+    background-image: url(/Images/Website/Category/Men/men-long-sleeve.jpg);
+}
+
+.men-category-longsleeve-section-mobile::before {
+    background-image: url(/Images/Website/Category/Men/men-long-sleeve-mobile.jpg);
+}
+
+/* WOMEN */
+.women-category-hoodie-section::before {
+    background-image: url(/Images/Website/Category/Women/women-hoodie.png);
+}
+
+.women-category-tshirt-section::before {
+    background-image: url(/Images/Website/Category/Women/women-t-shirt.jpg);
+}
+
+.women-category-pockettshirt-section::before {
+    background-image: url(/Images/Website/Category/Women/women-pocket-t-shirt.jpg);
+}
+
+.women-category-longsleeve-section::before {
+    background-image: url(/Images/Website/Category/Women/women-long-sleeve.jpg);
+}
+
+.women-category-longsleeve-section-mobile::before {
+    background-image: url(/Images/Website/Category/Women/women-long-sleeve-mobile.jpg);
+}
+
+/* Don't show the mobile section by default */
+.section-row-mobile {
+    display: none;
+}
+
+/* Men and women section responsive design */
+@media only screen and (max-width: 500px) {
+
+    /* Show the mobile section if we are on mobile */
+    .section-row-mobile{
+        display: flex;
+    }
+
+    /* Hide the desktop version section if we are on mobile */
+    .section-row {
+        display: none;
+    }
+
+    .hoodie-container {
+        height: 98%;
+    }
+
+}

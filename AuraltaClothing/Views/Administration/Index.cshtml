@@ -1,0 +1,128 @@
+﻿
+@using AuraltaClothing.Models
+@using AuraltaClothing.ViewModels.Administration
+@model AdministrationVM
+
+@{
+    ViewBag.Title = "Administration";
+}
+
+<div class="tab-block offset-lg-3 col-lg-6 col-12" id="tab-block">
+
+    <ul class="tab-mnu">
+        <li class="active">Orders</li>
+        <li>Messages</li>
+        <li>Users</li>
+        <li>Subscriptions</li>
+    </ul>
+
+    <div class="tab-cont">
+
+        <!-- Orders -->
+        <div class="tab-pane">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Order order in Model.Orders)
+                    {
+                        <tr>
+                            <th scope="row">@order.OrderId</th>
+                            <td>@order.FirstName</td>
+                            <td>@order.Total $</td>
+                            <td>@order.Date.ToString("dddd, dd MMMM yyyy")</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Messages -->
+        <div class="tab-pane">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Message message in Model.Messages)
+                    {
+                        <tr>
+                            <th scope="row">@message.MessageId</th>
+                            <td>@message.FirstName @message.LastName</td>
+                            <td>@message.Email</td>
+                            <td>@message.Subject</td>
+                            <td>@message.Description</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Users -->
+        <div class="tab-pane">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ApplicationUser user in Model.Users)
+                    {
+                        <tr>
+                            <th scope="row">@user.FirstName @user.LastName</th>
+                            <td>@user.Email</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Subscriptions -->
+        <div class="tab-pane">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Subscription subscription in Model.Subscriptions)
+                    {
+                        <tr>
+                            <th scope="row">remind David to do this</th>
+                            <td>@subscription.Email</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts{
+    @Styles.Render("~/Content/Administration/Administration.css")
+    @Scripts.Render("~/Scripts/Javascript/Administration.js")
+}
+

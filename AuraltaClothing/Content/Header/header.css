@@ -1,0 +1,34 @@
+﻿
+/* CSS for the header in the layout */
+header {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr repeat(1, auto) 1fr;
+    grid-column-gap: 5px;
+}
+
+/* CSS to center the logo */
+header div:nth-child(1) {
+    grid-column-start: 2;
+}
+
+/* CSS to righten the the shopping cart and the account icons */
+header div:nth-child(2) {
+    margin-left: auto;
+}
+
+/* CSS for the logo image */
+.logo {
+    margin-bottom: 0;
+    font-size: 41pt;
+    margin-left: 16px;
+    letter-spacing: 16px;
+    font-family: MontHeavyDemo;
+}
+
+/* TO BE VERIFIED : For mobile screens, logo overflows and causes horizontal scroll because font to big*/
+@media only screen and (max-width: 576px) {
+    .logo {
+        font-size: 30pt;
+    }
+}

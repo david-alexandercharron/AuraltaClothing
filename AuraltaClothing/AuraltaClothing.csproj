@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{40DDDE68-B261-4FD1-B45E-181A21BBC829}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AuraltaClothing</RootNamespace>
+    <AssemblyName>AuraltaClothing</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>54279</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="messages">
+      <HintPath>C:\Users\Crime\Desktop\CPCWS_Rating_DotNet_Samples\REST\rating\GetRates\bin\Debug\messages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
+    <Reference Include="rating">
+      <HintPath>C:\Users\Crime\Desktop\CPCWS_Rating_DotNet_Samples\REST\rating\GetRates\bin\Debug\rating.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="CanadaPost\GetRates.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\WomenController.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Enums\ProductColor.cs" />
+    <Compile Include="Enums\ProductCategory.cs" />
+    <Compile Include="Enums\ProductLogo.cs" />
+    <Compile Include="Enums\ProductSize.cs" />
+    <Compile Include="Enums\ShippingType.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\MessageManager.cs" />
+    <Compile Include="Managers\OrderManager.cs" />
+    <Compile Include="Managers\ProductManager.cs" />
+    <Compile Include="Managers\ShoppingCartManager.cs" />
+    <Compile Include="Managers\ShoppingCartProductManager.cs" />
+    <Compile Include="Managers\SubscriptionManager.cs" />
+    <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Migrations\201910252336480_InitEntityFramework.cs" />
+    <Compile Include="Migrations\201910252336480_InitEntityFramework.designer.cs">
+      <DependentUpon>201910252336480_InitEntityFramework.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912160732446_ApplicationUserNames.cs" />
+    <Compile Include="Migrations\201912160732446_ApplicationUserNames.designer.cs">
+      <DependentUpon>201912160732446_ApplicationUserNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912190046569_Subscriptions.cs" />
+    <Compile Include="Migrations\201912190046569_Subscriptions.designer.cs">
+      <DependentUpon>201912190046569_Subscriptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912190227531_Product.cs" />
+    <Compile Include="Migrations\201912190227531_Product.designer.cs">
+      <DependentUpon>201912190227531_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912190244175_ShoppingCart.cs" />
+    <Compile Include="Migrations\201912190244175_ShoppingCart.designer.cs">
+      <DependentUpon>201912190244175_ShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912190245464_UserShoppingCart.cs" />
+    <Compile Include="Migrations\201912190245464_UserShoppingCart.designer.cs">
+      <DependentUpon>201912190245464_UserShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912190314123_Order.cs" />
+    <Compile Include="Migrations\201912190314123_Order.designer.cs">
+      <DependentUpon>201912190314123_Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912190320471_ProductOrder.cs" />
+    <Compile Include="Migrations\201912190320471_ProductOrder.designer.cs">
+      <DependentUpon>201912190320471_ProductOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912261740287_ProductGender.cs" />
+    <Compile Include="Migrations\201912261740287_ProductGender.designer.cs">
+      <DependentUpon>201912261740287_ProductGender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001230055480_ProductSizeAndOrder.cs" />
+    <Compile Include="Migrations\202001230055480_ProductSizeAndOrder.designer.cs">
+      <DependentUpon>202001230055480_ProductSizeAndOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001300153195_ProductLogo.cs" />
+    <Compile Include="Migrations\202001300153195_ProductLogo.designer.cs">
+      <DependentUpon>202001300153195_ProductLogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002262257384_ProductDescription.cs" />
+    <Compile Include="Migrations\202002262257384_ProductDescription.designer.cs">
+      <DependentUpon>202002262257384_ProductDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003011828320_Messages.cs" />
+    <Compile Include="Migrations\202003011828320_Messages.designer.cs">
+      <DependentUpon>202003011828320_Messages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003050118020_MessageSubject.cs" />
+    <Compile Include="Migrations\202003050118020_MessageSubject.designer.cs">
+      <DependentUpon>202003050118020_MessageSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003050150023_MessageNames.cs" />
+    <Compile Include="Migrations\202003050150023_MessageNames.designer.cs">
+      <DependentUpon>202003050150023_MessageNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003051855357_CreateRoles.cs" />
+    <Compile Include="Migrations\202003051855357_CreateRoles.designer.cs">
+      <DependentUpon>202003051855357_CreateRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003051902033_CreateUsers.cs" />
+    <Compile Include="Migrations\202003051902033_CreateUsers.designer.cs">
+      <DependentUpon>202003051902033_CreateUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003062208568_UpdateOrder_ShippingInfo.cs" />
+    <Compile Include="Migrations\202003062208568_UpdateOrder_ShippingInfo.designer.cs">
+      <DependentUpon>202003062208568_UpdateOrder_ShippingInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003062238208_UpdateOrder_Pricing.cs" />
+    <Compile Include="Migrations\202003062238208_UpdateOrder_Pricing.designer.cs">
+      <DependentUpon>202003062238208_UpdateOrder_Pricing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003062244594_UpdateOrder_ClientNameEmail.cs" />
+    <Compile Include="Migrations\202003062244594_UpdateOrder_ClientNameEmail.designer.cs">
+      <DependentUpon>202003062244594_UpdateOrder_ClientNameEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003141851522_UpdateOrderInfo.cs" />
+    <Compile Include="Migrations\202003141851522_UpdateOrderInfo.designer.cs">
+      <DependentUpon>202003141851522_UpdateOrderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004130149552_Product-USD-Currency.cs" />
+    <Compile Include="Migrations\202004130149552_Product-USD-Currency.designer.cs">
+      <DependentUpon>202004130149552_Product-USD-Currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004130206551_ApplyPriceUSDToProducts.cs" />
+    <Compile Include="Migrations\202004130206551_ApplyPriceUSDToProducts.designer.cs">
+      <DependentUpon>202004130206551_ApplyPriceUSDToProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006052152521_UpdatePrices.cs" />
+    <Compile Include="Migrations\202006052152521_UpdatePrices.designer.cs">
+      <DependentUpon>202006052152521_UpdatePrices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006052210344_UpdatePrices1.cs" />
+    <Compile Include="Migrations\202006052210344_UpdatePrices1.designer.cs">
+      <DependentUpon>202006052210344_UpdatePrices1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Paypal\PaypalConfiguration.cs" />
+    <Compile Include="Paypal\PaypalLogger.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Services\PaypalService.cs" />
+    <Compile Include="Roles\Roles.cs" />
+    <Compile Include="Services\CookieService.cs" />
+    <Compile Include="Services\PriceService.cs" />
+    <Compile Include="Services\ShippingService.cs" />
+    <Compile Include="Services\ShoppingCartService.cs" />
+    <Compile Include="Services\StringToEnumService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModels\Account\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\AuraltaClothingDbContext.cs" />
+    <Compile Include="ViewModels\Administration\AdministrationVM.cs" />
+    <Compile Include="ViewModels\Home\HomeVM.cs" />
+    <Compile Include="ViewModels\Home\MessageVM.cs" />
+    <Compile Include="ViewModels\Manage\AccountVM.cs" />
+    <Compile Include="ViewModels\Manage\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductImage.cs" />
+    <Compile Include="Models\ProductOrder.cs" />
+    <Compile Include="Models\ShoppingCartProduct.cs" />
+    <Compile Include="Models\Subscription.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Account\LoginRegisterForgotPasswordVM.cs" />
+    <Compile Include="ViewModels\Account\LoginVM.cs" />
+    <Compile Include="ViewModels\Account\RegisterVM.cs" />
+    <Compile Include="ViewModels\Products\ProductsVM.cs" />
+    <Compile Include="ViewModels\Products\AddToCartVM.cs" />
+    <Compile Include="ViewModels\Products\ProductVM.cs" />
+    <Compile Include="ViewModels\ShoppingCart\CheckoutVM.cs" />
+    <Compile Include="ViewModels\ShoppingCart\ShoppingCartVM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AboutUs\AboutUs.css" />
+    <Content Include="Content\Administration\Administration.css" />
+    <Content Include="Content\Animations\Animations.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Category\Category.css" />
+    <Content Include="Content\CustomSection\CustomSection.css" />
+    <Content Include="Content\Custom\CustomFormBox.css" />
+    <Content Include="Content\Custom\CustomRadioButton.css" />
+    <Content Include="Content\Fonts\fonts.css" />
+    <Content Include="Content\FormValidation\FormValidation.css" />
+    <Content Include="Content\Header\header.css" />
+    <Content Include="Content\Home\ContactUs.css" />
+    <Content Include="Content\Home\Home.css" />
+    <Content Include="Content\Javascript\FontAwesome5\FontAwesome5.js" />
+    <Content Include="Content\Login\Login.css" />
+    <Content Include="Content\Manage\Manage.css" />
+    <Content Include="Content\Men\ProductPage.css" />
+    <Content Include="Content\Men\ProductStyles.css" />
+    <Content Include="Content\ShoppingCart\Checkout.css" />
+    <Content Include="Content\ShoppingCart\ShoppingCartPage.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\Fonts\Mont-HeavyDEMO.otf" />
+    <Content Include="Images\AuraltaClothingIcon.png" />
+    <Content Include="Images\AuraltaClothingLogo.png" />
+    <Content Include="Images\Flags\CAD.png" />
+    <Content Include="Images\Flags\USD.png" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - Black Lifestyle\Hoodie Premium Auralta - Black Lifestyle-hover.png" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - Black Lifestyle\Hoodie Premium Auralta - Black Lifestyle.png" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - Black Lifestyle\Hoodies description.txt" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - Red Maroon\Hoodie Premium Auralta - Red Maroon-hover.png" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - Red Maroon\Hoodie Premium Auralta - Red Maroon.png" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - Red Maroon\Hoodies description.txt" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - Sandstorm\Hoodie Premium Auralta - Sandstorm-hover.png" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - Sandstorm\Hoodie Premium Auralta - Sandstorm.png" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - Sandstorm\Hoodies description.txt" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - White Lifestyle\Hoodie Premium Auralta - White Lifestyle-hover.png" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - White Lifestyle\Hoodie Premium Auralta - White Lifestyle.png" />
+    <Content Include="Images\Products\Hoodies\Premium Auralta - White Lifestyle\Hoodies description.txt" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - Black Camo\Hoodie Premium RTYP - Black Camo-hover.png" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - Black Camo\Hoodie Premium RTYP - Black Camo.png" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - Black Camo\Hoodies description.txt" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - Black Lifestyle\Hoodie Premium RTYP - Black Lifestyle-hover.png" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - Black Lifestyle\Hoodie Premium RTYP - Black Lifestyle.png" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - Black Lifestyle\Hoodies description.txt" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - Royal Blue\Hoodie Premium RTYP - Royal Blue-hover.png" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - Royal Blue\Hoodie Premium RTYP - Royal Blue.png" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - Royal Blue\Hoodies description.txt" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - White Lifestyle\Hoodie Premium RTYP - White Lifestyle-hover.png" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - White Lifestyle\Hoodie Premium RTYP - White Lifestyle.png" />
+    <Content Include="Images\Products\Hoodies\Premium RTYP - White Lifestyle\Hoodies description.txt" />
+    <Content Include="Images\Products\Long Sleeves\Auralta - Black Lifestyle\Long Sleeve description.txt" />
+    <Content Include="Images\Products\Long Sleeves\Auralta - Black Lifestyle\Long Sleeves Auralta - Black Lifestyle-hover.png" />
+    <Content Include="Images\Products\Long Sleeves\Auralta - Black Lifestyle\Long Sleeves Auralta - Black Lifestyle.png" />
+    <Content Include="Images\Products\Long Sleeves\Auralta - White Lifestyle\Long Sleeve description.txt" />
+    <Content Include="Images\Products\Long Sleeves\Auralta - White Lifestyle\Long Sleeves Auralta - White Lifestyle-hover.png" />
+    <Content Include="Images\Products\Long Sleeves\Auralta - White Lifestyle\Long Sleeves Auralta - White Lifestyle.png" />
+    <Content Include="Images\Products\Long Sleeves\RTYP - Black Lifestyle\Long Sleeve description.txt" />
+    <Content Include="Images\Products\Long Sleeves\RTYP - Black Lifestyle\Long Sleeves RTYP - Black Lifestyle-hover.png" />
+    <Content Include="Images\Products\Long Sleeves\RTYP - Black Lifestyle\Long Sleeves RTYP - Black Lifestyle.png" />
+    <Content Include="Images\Products\Long Sleeves\RTYP - White Lifestyle\Long Sleeve description.txt" />
+    <Content Include="Images\Products\Long Sleeves\RTYP - White Lifestyle\Long Sleeves RTYP - White Lifestyle-hover.png" />
+    <Content Include="Images\Products\Long Sleeves\RTYP - White Lifestyle\Long Sleeves RTYP - White Lifestyle.png" />
+    <Content Include="Images\Products\Pocket T-Shirts\RTYP - Beige Sand\Pocket T -shirt descriptions.txt" />
+    <Content Include="Images\Products\Pocket T-Shirts\RTYP - Beige Sand\Pocket T-Shirt RTYP - Beige Sand-hover.png" />
+    <Content Include="Images\Products\Pocket T-Shirts\RTYP - Beige Sand\Pocket T-Shirt RTYP - Beige Sand.png" />
+    <Content Include="Images\Products\Pocket T-Shirts\RTYP - Black Lifestyle\Pocket T -shirt descriptions.txt" />
+    <Content Include="Images\Products\Pocket T-Shirts\RTYP - Black Lifestyle\Pocket T-Shirt RTYP - Black Lifestyle-hover.png" />
+    <Content Include="Images\Products\Pocket T-Shirts\RTYP - Black Lifestyle\Pocket T-Shirt RTYP - Black Lifestyle.png" />
+    <Content Include="Images\Products\Pocket T-Shirts\RTYP - White Lifestyle\Pocket T -shirt descriptions.txt" />
+    <Content Include="Images\Products\Pocket T-Shirts\RTYP - White Lifestyle\Pocket T-Shirt RTYP - White Lifestyle-hover.png" />
+    <Content Include="Images\Products\Pocket T-Shirts\RTYP - White Lifestyle\Pocket T-Shirt RTYP - White Lifestyle.png" />
+    <Content Include="Images\Products\T-Shirts\Premium Auralta - Black Lifestyle\T-Shirt Descriptions.txt" />
+    <Content Include="Images\Products\T-Shirts\Premium Auralta - Black Lifestyle\T-Shirt Premium Auralta - Black Lifestyle-hover.png" />
+    <Content Include="Images\Products\T-Shirts\Premium Auralta - Black Lifestyle\T-Shirt Premium Auralta - Black Lifestyle.png" />
+    <Content Include="Images\Products\T-Shirts\Premium Auralta - Blue Ocean\T-Shirt Descriptions.txt" />
+    <Content Include="Images\Products\T-Shirts\Premium Auralta - Blue Ocean\T-Shirt Premium Auralta - Blue Ocean-hover.png" />
+    <Content Include="Images\Products\T-Shirts\Premium Auralta - Blue Ocean\T-Shirt Premium Auralta - Blue Ocean.png" />
+    <Content Include="Images\Products\T-Shirts\Premium Auralta - White Lifestyle\T-Shirt Descriptions.txt" />
+    <Content Include="Images\Products\T-Shirts\Premium Auralta - White Lifestyle\T-Shirt Premium Auralta - White Lifestyle-hover.png" />
+    <Content Include="Images\Products\T-Shirts\Premium Auralta - White Lifestyle\T-Shirt Premium Auralta - White Lifestyle.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Black Lifestyle\T-Shirt Descriptions.txt" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Black Lifestyle\T-Shirt Premium RTYP - Black Lifestyle-hover.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Black Lifestyle\T-Shirt Premium RTYP - Black Lifestyle.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Blue Navy\T-Shirt Descriptions.txt" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Blue Navy\T-Shirt Premium RTYP - Blue Navy-hover.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Blue Navy\T-Shirt Premium RTYP - Blue Navy.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Grey Smoke\T-Shirt Descriptions.txt" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Grey Smoke\T-Shirt Premium RTYP - Grey Smoke-hover.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Grey Smoke\T-Shirt Premium RTYP - Grey Smoke.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Motivational Red\T-Shirt Descriptions.txt" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Motivational Red\T-Shirt Premium RTYP - Motivational Red-hover.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - Motivational Red\T-Shirt Premium RTYP - Motivational Red.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - White Lifestyle\T-Shirt Descriptions.txt" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - White Lifestyle\T-Shirt Premium RTYP - White Lifestyle-hover.png" />
+    <Content Include="Images\Products\T-Shirts\Premium RTYP - White Lifestyle\T-Shirt Premium RTYP - White Lifestyle.png" />
+    <Content Include="Images\Website\AboutUs\main-image.jpg" />
+    <Content Include="Images\Website\Category\Men\men-hoodie.png" />
+    <Content Include="Images\Website\Category\Men\men-long-sleeve-mobile.jpg" />
+    <Content Include="Images\Website\Category\Men\men-long-sleeve.jpg" />
+    <Content Include="Images\Website\Category\Men\men-pocket-t-shirt.png" />
+    <Content Include="Images\Website\Category\Men\men-t-shirt.png" />
+    <Content Include="Images\Website\Category\Men\T-shirt men.jpg" />
+    <Content Include="Images\Website\Category\Women\women-hoodie.png" />
+    <Content Include="Images\Website\Category\Women\women-long-sleeve-mobile.jpg" />
+    <Content Include="Images\Website\Category\Women\women-long-sleeve.jpg" />
+    <Content Include="Images\Website\Category\Women\women-pocket-t-shirt.jpg" />
+    <Content Include="Images\Website\Category\Women\women-t-shirt.jpg" />
+    <Content Include="Images\Website\Error\error-404.png" />
+    <Content Include="Images\Website\Home\bottom-1.jpg" />
+    <Content Include="Images\Website\Home\bottom-2.jpg" />
+    <Content Include="Images\Website\Home\bottom-3.jpg" />
+    <Content Include="Images\Website\Home\bottom-4.jpg" />
+    <Content Include="Images\Website\Home\carousel-2-mobile.jpg" />
+    <Content Include="Images\Website\Home\carousel-2.jpg" />
+    <Content Include="Images\Website\Home\home-carousel-1-mobile.jpg" />
+    <Content Include="Images\Website\Home\home-carousel-1.png" />
+    <Content Include="Images\Website\Home\home-main.JPG" />
+    <Content Include="Images\Website\Home\men-section-old.png" />
+    <Content Include="Images\Website\Home\men-section.jpg" />
+    <Content Include="Images\Website\Home\subscription-background.jpg" />
+    <Content Include="Images\Website\Home\subscription-shirt-collection.png" />
+    <Content Include="Images\Website\Home\take-action-logo.png" />
+    <Content Include="Images\Website\Home\women-section-old.png" />
+    <Content Include="Images\Website\Home\women-section.png" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Javascript\Administration.js" />
+    <Content Include="Scripts\Javascript\Animations.js" />
+    <Content Include="Scripts\Javascript\Currency\CurrencySelector.js" />
+    <Content Include="Scripts\Javascript\Login.js" />
+    <Content Include="Scripts\Javascript\Slider.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Men\Category.cshtml" />
+    <Content Include="Views\Men\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Shared\_EmptyShoppingCart.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\ShoppingCart\Checkout.cshtml" />
+    <Content Include="Views\Shared\Category\_Category.cshtml" />
+    <Content Include="Views\Women\Category.cshtml" />
+    <Content Include="Views\Errors\Error404.cshtml" />
+    <Content Include="Views\Administration\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\PaymentSuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
+    <Folder Include="ViewModels\Men\" />
+    <Folder Include="ViewModels\Women\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910252336480_InitEntityFramework.resx">
+      <DependentUpon>201910252336480_InitEntityFramework.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912160732446_ApplicationUserNames.resx">
+      <DependentUpon>201912160732446_ApplicationUserNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912190046569_Subscriptions.resx">
+      <DependentUpon>201912190046569_Subscriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912190227531_Product.resx">
+      <DependentUpon>201912190227531_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912190244175_ShoppingCart.resx">
+      <DependentUpon>201912190244175_ShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912190245464_UserShoppingCart.resx">
+      <DependentUpon>201912190245464_UserShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912190314123_Order.resx">
+      <DependentUpon>201912190314123_Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912190320471_ProductOrder.resx">
+      <DependentUpon>201912190320471_ProductOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912261740287_ProductGender.resx">
+      <DependentUpon>201912261740287_ProductGender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001230055480_ProductSizeAndOrder.resx">
+      <DependentUpon>202001230055480_ProductSizeAndOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001300153195_ProductLogo.resx">
+      <DependentUpon>202001300153195_ProductLogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002262257384_ProductDescription.resx">
+      <DependentUpon>202002262257384_ProductDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003011828320_Messages.resx">
+      <DependentUpon>202003011828320_Messages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003050118020_MessageSubject.resx">
+      <DependentUpon>202003050118020_MessageSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003050150023_MessageNames.resx">
+      <DependentUpon>202003050150023_MessageNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003051855357_CreateRoles.resx">
+      <DependentUpon>202003051855357_CreateRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003051902033_CreateUsers.resx">
+      <DependentUpon>202003051902033_CreateUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003062208568_UpdateOrder_ShippingInfo.resx">
+      <DependentUpon>202003062208568_UpdateOrder_ShippingInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003062238208_UpdateOrder_Pricing.resx">
+      <DependentUpon>202003062238208_UpdateOrder_Pricing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003062244594_UpdateOrder_ClientNameEmail.resx">
+      <DependentUpon>202003062244594_UpdateOrder_ClientNameEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003141851522_UpdateOrderInfo.resx">
+      <DependentUpon>202003141851522_UpdateOrderInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004130149552_Product-USD-Currency.resx">
+      <DependentUpon>202004130149552_Product-USD-Currency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004130206551_ApplyPriceUSDToProducts.resx">
+      <DependentUpon>202004130206551_ApplyPriceUSDToProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006052152521_UpdatePrices.resx">
+      <DependentUpon>202006052152521_UpdatePrices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006052210344_UpdatePrices1.resx">
+      <DependentUpon>202006052210344_UpdatePrices1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54279</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54279/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

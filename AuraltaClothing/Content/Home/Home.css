@@ -1,0 +1,638 @@
+﻿
+/* CSS for smooth scroll */
+/*html {
+    scroll-behavior: smooth;
+}*/
+
+
+/*
+ * ---------------------------------
+ *          CAROUSEL
+ * ---------------------------------
+ */
+
+/* CSS for the main image on the home page (image as background of div element) */
+#home-main-image {
+    height: 720px;
+    background-image: url(../../Images/Website/Home/home-carousel-1.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#second-carousel-image {
+    height: 720px;
+    background-image: url(../../Images/Website/Home/carousel-2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+/* Change the carousel image to the image adapted for mobile */
+@media only screen and (max-width: 500px) {
+    #home-main-image {
+        background-image: url(/Images/Website/Home/home-carousel-1-mobile.jpg);
+    }
+
+    #second-carousel-image {
+        background-image: url(/Images/Website/Home/carousel-2-mobile.jpg);
+    }
+
+    /* Hide the carousel text on mobile */
+    .carousel-text-container{
+        display: none;
+    }
+}
+
+/* CSS to put element 500px of height (Created for the women and men section on home page */
+.height-500px {
+    height: 500px;
+}
+
+
+/* Main-Carousel */
+#main-carousel {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/* Text on the first item of the carousel */
+.carousel-text-container {
+    margin-left: 45px;
+    letter-spacing: 2px;
+}
+
+/* Create your lifestyle text */
+.carousel-text-container h1 {
+    font-family: MontHeavyDemo;
+    margin-bottom: 0;
+}
+
+/* Create your lifestyle text */
+.carousel-text-container h4{
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Give the images of the carousel a height */
+.carousel-item img {
+    height: 720px;
+}
+
+/* Shop Now Button on the first carousel page */
+#shopButton {
+    width: 135px;
+    position: absolute;
+    right: 0;
+    bottom: 10%;
+    left: 0;
+    z-index: 15;
+    display: -ms-flexbox;
+    -ms-flex-pack: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0rem 0.5rem;
+    border-radius: 0;
+    border: 2px solid #f8f9fa;
+}
+
+
+/* Change indicators to be a circle */
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+
+/*
+ * ---------------------------------
+ *      FOLLOW THE MOVEMENT
+ * ---------------------------------
+ */
+
+.follow-movement-section {
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
+.follow-movement-title {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    margin-bottom: 0px;
+}
+
+.follow-movement-movement {
+    font-family: 'Poppins';
+    font-style: italic;
+    font-weight: 800;
+}
+
+.follow-movement-text {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-size: 1.4rem;
+}
+
+
+
+/* Change the font-size of the Follow-Movement section on mobile */
+@media only screen and (max-width: 500px) {
+    .follow-movement-title {
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+
+    .follow-movement-text {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+}
+
+
+/*
+ * ---------------------------------
+ *          NEW RELEASES
+ * ---------------------------------
+ */
+
+
+/* New Releases section */
+#new-releases {
+    max-width: 1340px; /* for min width 1140 somthin*/
+    overflow: hidden;
+}
+
+/* New Releases text */
+.new-releases-text {
+    margin-left: 25px;
+    margin-bottom: auto;
+    margin-top: auto;
+    font-family: 'Poppins';
+    font-style: italic;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+/* New Releases Shop Now Button */
+.new-releases-shop-now {
+    margin-right: 25px;
+    font-family: MontHeavyDemo;
+}
+
+/* Style for each product */
+.new-release-product {
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 1rem;
+}
+
+
+/* New Releases image */
+#new-releases img {
+    transition: 0.5s;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+    width: 100%;
+}
+
+/* Zoom in effect */
+#new-releases img:hover {
+    -ms-transform: scale(1.08); /* IE 9 */
+    -webkit-transform: scale(1.08); /* Safari 3-8 */
+    transform: scale(1.08);
+}
+
+
+/* Padding for the product name */
+.product-name {
+    padding-top: 2rem
+}
+
+/* On desktop version hide the slider controls */
+a.control_prev, a.control_next {
+    display: none;
+}
+
+/* New Releases responsive design */
+@media only screen and (max-width: 500px) {
+
+    /* The new releases becomes a slider on mobile version */
+    #new-releases {
+        position: relative;
+        overflow: hidden;
+    }
+
+    #new-releases .new-release-product-row {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    #new-releases .new-release-product-row .new-release-product {
+        position: relative;
+        display: block;
+        float: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Center the New Releases text and hide the shop now button on mobile */
+    .new-releases-header {
+        display: block !important;
+    }
+
+    .new-releases-text {
+        font-size: 1rem;
+        text-align: center;
+        margin-left: 0px
+    }
+
+    .new-releases-shop-now {
+        display: none;
+    }
+
+
+    /* Adjust the product images for the slider */
+    #new-releases img {
+        width: 200px !important;
+    }
+
+    .product-name {
+        font-size: 0.8rem;
+    }
+    
+    /* The prev and next buttons for the slider */
+    a.control_prev, a.control_next {
+        position: absolute;
+        top: 40%;
+        z-index: 999;
+        display: block;
+        padding: 4% 3%;
+        width: auto;
+        height: auto;
+        background: #2a2a2a;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 18px;
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    a.control_prev:hover, a.control_next:hover {
+        opacity: 1;
+        -webkit-transition: all 0.2s ease;
+        color: white;
+    }
+
+    a.control_prev {
+        border-radius: 0 2px 2px 0;
+    }
+
+    a.control_next {
+        right: 0;
+        border-radius: 2px 0 0 2px;
+    }
+    
+}
+
+
+/*
+ * ---------------------------------
+ *          TAKE ACTION
+ * ---------------------------------
+ */
+
+/* Full width white background for the container */
+.take-action-container {
+    margin-top: 150px;
+    background-color: white;
+    letter-spacing: 2px;
+}
+
+
+.take-action-action {
+    font-family: 'Poppins';
+    font-style: italic;
+    font-weight: 800;
+}
+
+
+.take-action-container h1 {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    margin-bottom: 0px;
+    font-size: 3.2rem;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    line-height: 1.5;
+}
+
+.take-action-container h4 {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    margin-bottom: 0px;
+    margin-top: 100px;
+    line-height: 1.5;
+}
+
+/* Take Action responsive design */
+@media only screen and (max-width: 500px) {
+
+    /* Change the Take Action font size and padding */
+    .take-action-container h1 {
+        font-size: 2.5rem;
+        padding-bottom: 25px;
+    }
+
+    /* Change the text size */
+    .take-action-container h4 {
+        font-size: 1rem;
+        margin-top: 50px;
+    }
+
+    /* Ajust the image size on mobile */
+    .take-action-section img {
+        width: 65%;
+    }
+
+    /* Add break lines on mobile */
+    .take-action-section .mobile-br{
+        display: block;
+    }
+}
+
+
+/*
+ * ---------------------------------
+ *       MEN & WOMEN SECTION
+ * ---------------------------------
+ */
+
+/* Women and Men Section div */
+.home-women-men-section {
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 2px -1px rgba(0,0,0,0.19);
+    overflow: hidden;
+}
+
+.home-women-men-section h1 {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+}
+
+.home-women-men-section h5 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+}
+
+/* This is the container that holds both women and men section */
+.home-women-men-container {
+    margin-top: 10rem !important;
+    margin-bottom: 12rem !important;
+}
+
+/* Both men and women section */
+.section {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
+
+/* CSS for the men section on the homepage */
+.home-men-section {
+    margin-left: 6%;
+}
+
+/* CSS for the men section on the homepage */
+.home-men-section::before {
+    background-image: url(../../Images/Website/Home/men-section.jpg);
+}
+
+/* CSS for the women section on the homepage */
+.home-women-section::before {
+    background-image: url(../../Images/Website/Home/women-section.png);
+}
+
+.home-women-section {
+    margin-left: 13.666667%; /* The margin left replaces offset-md-2 */
+}
+
+
+
+/* Men and women section responsive design */
+@media only screen and (max-width: 500px) {
+
+    .home-women-men-section {
+        margin-right: -5px;
+        margin-left: -5px;
+    }
+
+    .home-women-men-section h5{
+        margin-top: 25px;
+    }
+
+
+    /* Give the men and women section on homepage 100% width for mobile*/
+    .section {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-left: 0% !important;
+    }
+
+    /* Change the height of the women and men section on mobile to 750px */
+    .height-500px {
+        height: 750px;
+    }
+
+}
+
+
+
+/*
+ * ---------------------------------
+ *       SUBSCRIPTION SECTION
+ * ---------------------------------
+ */
+
+/* Subscription Section */
+.subscription-section {
+    background-image: url(/Images/Website/Home/subscription-background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+/* Subscription section title */
+.subscription-title {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+}
+
+.subscription-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+}
+
+#subscription-form input, #subscription-form span {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Subscription Container */
+.subscription-container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 1000;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Subscription column */
+.subscription-col {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/* Each subscription input (name, email) */
+.subscription-col input{
+    max-width: 94%; 
+    box-shadow: 0 0 10px 3px rgba(0,0,0,0.19);
+}
+
+/* Shirt Collection Image */
+#subscription-shirt-collection {
+    padding: 15px;
+}
+
+/* Subscription Button */
+#subscriptionButton {
+    background-color: #154d65;
+    max-width: 94%;
+}
+
+#subscriptionButton:hover {
+    background-color: #114055;
+}
+
+/* Subscription alert message */
+.subscription-alert {
+    max-width: 94%;
+    display: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Subscription section responsive design */
+@media only screen and (min-width: 1200px) {
+    
+    .subscription-alert {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Subscription section responsive design */
+@media only screen and (max-width: 500px) {
+
+    /* Adjust the subscription title for mobile devices */
+    .subscription-title {
+        font-size: 1.4rem;
+    }
+
+    .subscription-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Adjust the subscription-alert font for mobile devices */
+    .subscription-alert {
+        font-size: 9pt;
+        max-width: 100%;
+    }
+
+    /* Remove the Shirt-Collection image on mobile devices */
+    #subscription-shirt-collection{
+        display: none;
+    }
+
+    /* Give the subscription inputs a max width of 100% */
+    .subscription-col input, #subscriptionButton {
+        max-width: 100%;
+    }
+
+
+}
+
+/* This is because safari causes problems with 'display: flex' when we want 'height: auto' on images */
+/* https://stackoverflow.com/questions/60477817/how-to-fix-image-height-issue-on-webkit-when-parent-is-set-to-inline-flex */
+.four-images-section {
+    align-items: flex-start;
+}
+
+
+/*
+ * ---------------------------------
+ *       FOLLOW US SECTION
+ * ---------------------------------
+ */
+
+.followus-section {
+    position: relative;
+    z-index: 999;
+    margin-top: 5rem !important;
+}
+
+.followus-section h1{
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+}
+
+.followus-section h3 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+}
+
+/* Add style to the facebook, instagram and twitter icons in the folluw us section of the homepage */
+.followus-section .followus-icon {
+    color: grey;
+    font-size: 38pt;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+
+.followus-section .fa-facebook-square {
+    color: #3B5998;
+}
+
+.followus-section .fa-twitter {
+    color: #55ACEE;
+}
+
+.followus-section .fa-instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .followus-section-title{
+        font-size: 2rem;
+    }
+
+    .followus-section-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .four-images-section img:first-child{
+        display:none;
+    }
+    
+    .four-images-section img{
+        padding: 0;
+    }
+}

@@ -1,0 +1,303 @@
+﻿
+@using AuraltaClothing.Models
+@using AuraltaClothing.ViewModels.Home
+@model HomeVM
+
+@{
+    ViewBag.Title = "Rise to your potential";
+}
+
+<!-- Carousel -->
+<div id="main-carousel" class="carousel slide" data-ride="carousel">
+
+    <!-- Carousel Indicators-->
+    <ol class="carousel-indicators">
+
+        <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#main-carousel" data-slide-to="1"></li>
+        <li data-target="#main-carousel" data-slide-to="2"></li>
+    </ol>
+
+
+    <div class="carousel-inner">
+
+        <!-- First item -->
+        <div class="carousel-item active">
+
+            <div class="row" id="home-main-image">
+                <div class="align-vertical">
+                    <div class="carousel-text-container">
+                        <h1 class="text-center font-weight-bold section-title">Create Your Lifestyle</h1>
+                        <h4 class="text-center">Rise To Your Potential</h4>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Second item -->
+        <div class="carousel-item">
+            <div id="second-carousel-image"></div>
+        </div>
+
+
+        <!-- Third item -->
+        <div class="carousel-item">
+            <img class="d-block w-100" src="/Images/Website/Home/home-main.jpg" alt="Third slide">
+        </div>
+
+
+        <!-- Show now button will appear on every carousel item -->
+        <button id="shopButton" type="button" class="btn btn-outline-light btn-lg">
+            <strong>SHOP NOW</strong>
+        </button>
+    </div>
+</div>
+
+
+<!-- Follow the movement section -->
+<div class="jumbotron jumbotron-fluid follow-movement-section">
+    <div class="container">
+        <h1 class="display-4 text-center follow-movement-title">Follow the <b class="follow-movement-movement">MOVEMENT</b></h1>
+        <h3 class="lead text-center follow-movement-text">Elevate your style with our new releases.</h3>
+    </div>
+</div>
+
+<!-- New Releases -->
+<div id="new-releases" class="container slideanim">
+
+    <div class="row d-flex justify-content-between mb-3 new-releases-header">
+        <p class="font-weight-bold new-releases-text">New Releases</p>
+        <a href="#" class="btn btn-dark new-releases-shop-now">SHOP NOW &nbsp;<i class="fas fa-long-arrow-alt-right"></i></a>
+    </div>
+
+    <div class="row new-release-product-row">
+
+
+        @foreach (Product product in Model.Products)
+        {
+            <div class="col-sm-12 col-lg-3 new-release-product">
+                <a href="/Product?id=@product.ProductId" class="product-link">
+
+                    <img src="@product.GeneralImagePath" alt="@product.Name" class="product-img rounded mx-auto d-block" />
+                    <p class="text-center product-name"><b>@product.Name</b></p>
+                    <p class="text-center product-price mb-0"><b>$@AuraltaClothing.Services.PriceService.GetPrice(product, Model.CurrencyCode)</b></p>
+                    <p class="text-center tx-included text-dark"></p>
+                </a>
+            </div>
+        }
+
+        
+    </div>
+    <a class="control_next" style="margin-right: 15px;">></a>
+    <a class="control_prev"><</a>
+
+</div>
+
+
+<!-- Take Action Section -->
+<div class="row take-action-section">
+    <div class="container-fluid take-action-container">
+
+        <h1 class="text-center take-action-title slideanim">Take <span class="take-action-action">ACTION!</span></h1>
+
+        <div class="row pb-5 slideanim">
+
+            <div class="col-md-8 order-md-1 order-2 font-weight-bold">
+                <h4 class="ml-3">
+                    Auralta Clothing is a Canadian Lifestyle clothing brand established in 2020 with one goal,
+                    to inspire others to Rise to Your Potential. Featuring High Quality clothing as well as spreading
+                    an important message & motivation to each other of reaching our full potential.
+                </h4>
+                <h4 class="ml-3">
+                    <span class="mobile-br">Create your <b>Lifestyle</b>,</span> <span class="mobile-br">Follow the <b>Movement</b>,</span> <span class="mobile-br">Rise <b>Up</b> & Take <b>ACTION</b>.</span>
+                    <br>Rise To Your Potential with Auralta Clothing.
+                </h4>
+            </div>
+
+            <div class="col-md-4 order-md-2 order-1">
+                <img src="~/Images/Website/Home/take-action-logo.png" class="mx-auto d-block" alt="Auralta RTYP logo" width="100%" />
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Women & Men Section -->
+<div class="row home-women-men-section">
+    <div id="women-men-container" class="container home-women-men-container">
+
+        <!-- Shop Now-->
+        <h1 class="text-center">Shop Now</h1>
+        <h5 class="text-center mb-5">Rise To Your Potential with a great selection of QUALITY apparel.</h5>
+
+        <div class="row height-500px">
+
+            <!-- WOMEN -->
+            <a href="/Women/Category" class="slideanim offset-md-2 col-md-4 offset-0 text-center home-women-section section" style="box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important; margin-left: 13.666667%; /* The margin left replaces offset-md-2 */">
+                <container>
+                    <div class="row">
+                        <p class="home-text-section text-dark bg-white offset-4 col-4 pt-3 pb-3"><strong>WOMEN</strong></p>
+                    </div>
+                </container>
+            </a>
+
+            <!-- MEN -->
+            <a href="/Men/Category" class="slideanim col-md-4 text-center home-men-section section" style="box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important; margin-left: 6%;">
+                <container>
+                    <div class="row">
+                        <p class="home-text-section text-dark bg-white offset-4 col-4 pt-3 pb-3"><strong>MEN</strong></p>
+                    </div>
+                </container>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Subscription -->
+<div class="row subscription-section">
+
+    <div class="container subscription-container slideanim">
+
+        <form id="subscription-form" method="post">
+
+            <div class="col-10 offset-1 bg-white subscription-col">
+                <div class="row">
+                    <div class="col-md-8 col-12 pr-5 pl-5 pt-5 pb-4">
+
+                        <!-- Title -->
+                        <h1 class="section-title subscription-title">Join Our <b>SUBSCRIPTION</b></h1>
+                        <p class="subscription-subtitle">Promotions, New Products and more..</p>
+
+                        <!-- Inputs for subscription -->
+                        <div class="form-group mt-5">
+                            <input type="text" class="form-control no-radius" name="name" id="name" placeholder="Name">
+                            <input type="email" class="form-control no-radius mt-3" id="email" placeholder="Email" data-val="true" data-val-email="The Email is not a valid e-mail address." data-val-required="The Email is required" name="email">
+
+                            <span class="field-validation-valid text-danger" data-valmsg-for="email" data-valmsg-replace="true"></span>
+
+                            <button id="subscriptionButton" class="btn no-radius text-white w-100 mt-3" type="submit">Subscribe</button>
+
+                            <!-- Alert message -->
+                            <div class="alert alert-success subscription-alert mt-2" role="alert">
+                                Thank you for subscribing with <strong>Auralta Clothing</strong>.
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- Shirt Collection Image -->
+                    <div id="subscription-shirt-collection" class="col-md-4 offset-md-0 col-6 offset-3">
+                        <img src="~/Images/Website/Home/subscription-shirt-collection.png" alt="Shirt Collection" width="100%" />
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>
+
+<!-- Follow Us Section -->
+<div class="followus-section mt-5">
+    <h1 class="text-center followus-section-title"><b>Join Our Lifestyle</b></h1>
+    <h3 class="text-center followus-section-subtitle">Follow us on Social Media.</h3>
+
+    <div class="d-flex justify-content-center mt-4">
+        <a href="https://www.instagram.com/auraltaclothing/" class="fab fa-instagram followus-icon" target="_blank"></a>
+        <a href="https://www.facebook.com/Auralta-Clothing-125747338824060/" class="fab fa-facebook-square followus-icon" target="_blank"></a>
+        <a href="https://twitter.com/auralta" class="fab fa-twitter followus-icon" target="_blank"></a>
+    </div>
+
+    <div class="row four-images-section slideanim mt-5">
+
+        <!-- Make the images the same height and width so they look nice -->
+        <img class="col-md-3 col-4 p-md-5" src="~/Images/Website/Home/bottom-1.jpg" alt="Home page image" />
+        <img class="col-md-3 col-4 p-md-5" src="~/Images/Website/Home/bottom-3.jpg" alt="Home page image" />
+        <img class="col-md-3 col-4 p-md-5" src="~/Images/Website/Home/bottom-2.jpg" alt="Home page image" />
+        <img class="col-md-3 col-4 p-md-5" src="~/Images/Website/Home/bottom-4.jpg" alt="Home page image" />
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+
+
+
+    @Styles.Render("~/Content/Men/ProductStyles.css")
+
+
+
+
+
+
+
+    @Styles.Render("~/Content/Home/Home.css")
+    @Styles.Render("~/Content/CustomSection/CustomSection.css")
+
+    @Styles.Render("~/Content/FormValidation/FormValidation.css")
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/Javascript/Slider.js")
+
+    <script>
+        $(document).ready(function () {
+
+            document.title = 'Auralta Clothing - Clothing and Apparel Store';
+
+            $('.new-releases-text').text("New Releases");
+
+            // Scroll effect from #shopButton to #women-men-container (160px = 10 rem)
+            $('#shopButton').click(function () {
+                $('html, body').unbind().animate({ scrollTop: $('#women-men-container').offset().top - 160 }, 2200);
+                //$('body').unbind().animate({ scrollTop: $('#women-men-container').offset().top - 160 }, 'slow');
+            })
+
+            // On form submit
+            $('#subscription-form').submit(function (e) {
+
+                // Removes the redirect on forms
+                e.preventDefault();
+
+                // If the form is valid
+                if ($("#subscription-form").valid()) {
+
+                    $.ajax({
+                        url: '/Home/AddSubscriber',
+                        type: 'post',
+                        data: $('#subscription-form').serialize(),
+                        success: function () {
+                            $('.subscription-alert').fadeIn();
+                            setTimeout(() => { $('.subscription-alert').fadeOut(); }, 3000);
+                            $('#emailInput').val('');
+                        }
+                    });
+
+                }
+
+            });
+
+            function init() {
+                // If the user arrives from click on Continue Shopping from another page (Shopping Cart)
+                var url = new URL(window.location.href);
+                var goto = url.searchParams.get("goto");
+                if (goto == 'women-men-container') {
+                    $('html, body').unbind().animate({ scrollTop: $('#' + goto).offset().top - 160 }, 'slow');
+                    window.history.pushState("", "", '/');
+                }
+            }
+
+            init();
+
+        });
+    </script>
+}

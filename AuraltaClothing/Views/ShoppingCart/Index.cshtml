@@ -1,0 +1,227 @@
+﻿
+@using AuraltaClothing.ViewModels.ShoppingCart
+@model ShoppingCartVM
+
+@{
+    ViewBag.Title = "Shopping Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mb-5">
+    <h2 class="text-center pt-5 mb-5 section-title">Shopping Cart</h2>
+
+    <div id="shopping-cart-container">
+
+        @if (Model.Products.Count > 0)
+        {
+            <div class="row">
+
+                @for (int i = 0; i < Model.Products.Count; i++)
+                {
+
+                    <!-- Product Container -->
+                    <div class="col-12 cart-product-container m-1">
+
+                        @Html.HiddenFor(m => m.Products[i].Product.ProductId, new { @class = "productId" })
+
+                        <!-- Image -->
+                        <a href="/Product?id=@Model.Products[i].Product.ProductId" class="col-sm-2 col-12">
+                            <img class="cart-product-image" src="@Model.Products[i].Product.GeneralImagePath" alt="@Model.Products[i].Product.GeneralImagePath" />
+                        </a>
+
+                        <!-- Name -->
+                        <div class="col-sm-6 col-12 cart-product-name-container">
+                            <a href="Product?id=@Model.Products[i].Product.ProductId" class="cart-product-name-container">
+                                <h5 class="mt-5 cart-product-name">@Model.Products[i].Product.Name</h5>
+                            </a>
+                            <p class="product-size">@Model.Products[i].Size</p>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="col-sm-2 col-12 d-flex justify-content-center">
+                            <div class="cart-product-quantity-grid">
+                                <button class="cart-product-btn cart-product-quantity-btn cart-product-quantity-column product-subtract">&minus;</button>
+                                <div class="cart-product-quantity-column product-qty">@Model.Products[i].Quantity</div>
+                                <button class="cart-product-btn cart-product-quantity-btn cart-product-quantity-column product-plus">&plus;</button>
+                            </div>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="col-sm-1 col-12 d-flex justify-content-center">
+                            <p class="cart-product-price">$@AuraltaClothing.Services.PriceService.GetPrice(Model.Products[i].Product, Model.CurrencyCode)</p>
+                        </div>
+
+                        <!-- Remove -->
+                        <div class="col-sm-1 col-12 remove-btn-container">
+                            <button class="cart-product-btn remove-btn rounded-circle"><i class="fas fa-times"></i></button>
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+            <!-- Checkout -->
+            <div class="row">
+                <div class="col-12 pr-0">
+                    <h5 id="sub-total" class="float-right">$@Model.Subtotal @Model.CurrencyCode</h5>
+                </div>
+                <div class="col-12 pr-0">
+                    <p class="float-right">Shipping calculated at checkout</p>
+                </div>
+                <div class="col-12 pr-0">
+                    <a href="/ShoppingCart/Checkout" style="color: white" class="float-right btn btn-primary no-radius btn-success mt-1 mb-5">CHECKOUT</a>
+                </div>
+
+            </div>
+        }
+        else
+        {
+
+            @Html.Partial("_EmptyShoppingCart")
+
+        }
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    @Styles.Render("~/Content/ShoppingCart/ShoppingCartPage.css")
+
+    <script>
+        
+
+        $(document).ready(function () {
+
+
+            // Intialize click events
+            // Modify quantity of the product event
+            //$('.product-subtract, .product-plus').click(function () {
+
+            //    // Get product id
+            //    var productId = $(this).closest('.cart-product-container').find('.productId').val();
+            //    console.log(productId);
+
+            //    // Decrement
+            //    if ($(this).hasClass('product-subtract')) {
+
+            //        if (document.getElementById("Quantity").value > 1) {
+            //            document.getElementById("Quantity").stepDown(1);
+            //        } else {
+            //            $("Quantity").set('value', 1);
+            //        }
+
+            //    // Increment
+            //    } else { 
+            //        document.getElementById("Quantity").stepUp(1);
+            //    }
+
+            //    // Remove the blur from the button after clicking on it
+            //    var button = $(this);
+            //    setTimeout(function () { button.blur(); }, 100);
+
+            //})
+
+            // Ajax calls to increment or decrement product quantity
+            $('.product-subtract, .product-plus').click(function () {
+
+                var container = $(this).closest('.cart-product-container');
+                var action = $(this).hasClass('product-subtract') ? 'DecrementProductQuantity' : 'IncrementProductQuantity';
+                var button = $(this);
+
+                $.ajax({
+                    url: '../ShoppingCart/' + action,
+                    type: 'POST',
+                    data: {
+
+                        // Get product information
+                        ProductId: container.find('.productId').val(),
+                        Size: container.find('.product-size').text(),
+                        Quantity: container.find('.product-qty').text()
+                    }
+                })
+                .done(function (o) {
+
+                    container.find('.product-qty').text(o.qty);
+
+                    // Remove the blur from the button after clicking on it
+                    setTimeout(function () { button.blur(); }, 100);
+                    $('#sub-total').text('$' + o.price.toFixed(2) + ' ' + $('.country').attr('currencyCode'))
+
+                })
+                .fail(function () {
+                    alert('An error has occured');
+                });
+
+            });
+
+            // Remove product from cart event
+            $('.remove-btn').click(function () {
+
+                // Reference to the product container
+                var container = $(this).closest('.cart-product-container');
+
+                $.ajax({
+                    url: '../ShoppingCart/RemoveProduct',
+                    type: 'POST',
+                    data: {
+
+                        // Get product information
+                        ProductId: container.find('.productId').val(),
+                        Size: container.find('.product-size').text(),
+                        Quantity: container.find('.product-qty').text()
+                    }
+                })
+                .done(function (o) {
+                    container.fadeOut(1000, () => {
+                        if (o.price !== undefined) {
+                            $('#sub-total').text('$' + o.price.toFixed(2) + ' ' + $('.country').attr('currencyCode'))
+                        } else {
+                            $('#shopping-cart-container').html(o);
+                        }
+                    })
+                })
+                .fail(function () {
+                    alert('An error has occured');
+                });
+
+            })
+
+
+
+        });
+
+    </script>
+}
+
+
+
+
+@*<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    <script>paypal.Buttons().render('#paypal-button-container');</script>
+
+    <script>
+        paypal.Button.render({
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill',
+                label: 'checkout',
+                tagline: 'true'
+            }
+        }, '#paypal-button');
+    </script>
+
+
+    <div id="paypal-button" style="width: 200px"></div>
+
+    <script>
+        paypal.Button.render({
+            style: {
+                size: 'responsive'
+            }
+        }, '#paypal-button');
+    </script>*@

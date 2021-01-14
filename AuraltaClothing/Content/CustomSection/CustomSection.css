@@ -1,0 +1,51 @@
+﻿
+
+/* There is 2 references of .section on the homepage for each men and women section */
+/* There is 4 references of .section on the category page for each category section */
+/* CSS to place the ::before background image correctly */
+.section {
+    display: grid;
+    cursor: pointer; /* CSS to change the cursor on section hover */
+    overflow: hidden; /* Don't let the image be bigger then the div container on zoom effect */
+}
+
+
+/* CSS to generalize all the section::before */
+.section::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transition: transform 0.75s; /* smoother zoom */
+}
+
+
+
+/* CSS to Add the blur effect on section hover */
+.section:hover::before {
+    /* Add the blur effect */
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+    /* zoom effect */
+    transform: scale(1.1);
+    transform-origin: 50% 50%;
+}
+
+.section:hover::before {
+    /* Add the blur effect */
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+    /* zoom effect */
+    transform: scale(1.1);
+    transform-origin: 50% 50%;
+}
+
+/* CSS for the text in the section */
+.home-text-section {
+    font-family: MontHeavyDemo;
+    letter-spacing: 3px;
+    position: absolute;
+    bottom: 0;
+}

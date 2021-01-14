@@ -1,0 +1,140 @@
+﻿
+@model string
+
+@{ 
+    string type = Model.Equals("men") ? "Men" : "Women";
+}
+
+<div class="container pt-5 pb-5">
+    <h2 class="text-center section-title">Choose your category</h2>
+
+
+    <div class="row section-row slideanim">
+
+        <!-- HOODIES -->
+        <div class="col-4 p-0">
+            <div class="hoodie-container">
+                <a href="/@type?category=Hoodie" class="text-center @(Model + "-category-hoodie-section") section">
+                    <container>
+                        <div class="row m-0">
+                            <p class="home-text-section text-dark bg-white offset-4 col-4 pt-3 pb-3"><strong>HOODIES</strong></p>
+                        </div>
+                    </container>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="col-8">
+            <div class="row">
+
+                <!-- T-SHIRTS -->
+                <div class="col-7 p-0">
+                    <div class="tshirt-container">
+                        <a href="/@type?category=TShirt" class="text-center @(Model + "-category-tshirt-section") section" style="height: 450px">
+                            <container>
+                                <div class="row m-0">
+                                    <p class="home-text-section text-dark bg-white offset-4 col-4 pt-3 pb-3"><strong>T-SHIRTS</strong></p>
+                                </div>
+                            </container>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- POCKET T-SHIRTS -->
+                <div class="col-5 p-0">
+                    <div class="pockettshirt-container">
+                        <a href="/@type?category=PocketTShirt" class="text-center @(Model + "-category-pockettshirt-section") section">
+                            <container>
+                                <div class="row m-0">
+                                    <p class="home-text-section text-dark bg-white offset-1 col-10 pt-3 pb-3"><strong>POCKET T-SHIRTS</strong></p>
+                                </div>
+                            </container>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <!-- Long Sleeves -->
+                <div class="col-12 p-0">
+                    <div class="longsleeve-container">
+
+
+                        <a href="/@type?category=LongSleeve" class="text-center @(Model + "-category-longsleeve-section") section" style="height: 200px">
+                            <container>
+                                <div class="row m-0">
+                                    <p class="home-text-section text-dark bg-white offset-4 col-4 pt-3 pb-3"><strong>LONG SLEEVES</strong></p>
+                                </div>
+                            </container>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row section-row-mobile">
+
+        <!-- HOODIES -->
+        <div class="col-12 p-0" style="height: 300px">
+            <div class="hoodie-container">
+                <a href="/@type?category=Hoodie" class="text-center @(Model + "-category-hoodie-section") section">
+                    <container>
+                        <div class="row m-0">
+                            <p class="home-text-section text-dark bg-white offset-4 col-5 pt-3 pb-3"><strong>HOODIES</strong></p>
+                        </div>
+                    </container>
+                </a>
+            </div>
+        </div>
+
+        <!-- T-SHIRTS -->
+        <div class="col-12 p-0" style="height: 300px">
+            <div class="tshirt-container">
+                <a href="/@type?category=TShirt" class="text-center @(Model + "-category-tshirt-section") section" style="height: 450px">
+                    <container>
+                        <div class="row m-0">
+                            <p class="home-text-section text-dark bg-white offset-4 col-5 pt-3 pb-3"><strong>T-SHIRTS</strong></p>
+                        </div>
+                    </container>
+                </a>
+            </div>
+        </div>
+
+        <!-- POCKET T-SHIRTS -->
+        <div class="col-12 p-0" style="height: 300px">
+            <div class="pockettshirt-container">
+                <a href="/@type?category=PocketTShirt" class="text-center @(Model + "-category-pockettshirt-section") section">
+                    <container>
+                        <div class="row m-0">
+                            <p class="home-text-section text-dark bg-white offset-1 col-10 pt-3 pb-3"><strong>POCKET T-SHIRTS</strong></p>
+                        </div>
+                    </container>
+                </a>
+            </div>
+        </div>
+
+        <!-- Long Sleeves -->
+        <div class="col-12 p-0" style="height: 300px">
+            <div class="longsleeve-container">
+
+                <a href="/@type?category=LongSleeve" class="text-center @(Model + "-category-longsleeve-section-mobile") section" style="height: 200px">
+                    <container>
+                        <div class="row m-0">
+                            <p class="home-text-section text-dark bg-white offset-2 col-8 pt-3 pb-3"><strong>LONG SLEEVES</strong></p>
+                        </div>
+                    </container>
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

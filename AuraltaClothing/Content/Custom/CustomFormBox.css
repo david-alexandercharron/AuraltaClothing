@@ -1,0 +1,25 @@
+﻿
+/* Form (Login, Register, ForgotPassword, etc) box container */
+.form-box {
+    height: 646px;
+    width: 793px;
+    overflow: hidden;
+    background: #FFFFFF;
+    padding: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* Medium width about */
+@media (max-width: 780px) {
+
+    /* Remove pt-5 and pb-5 on mobile */
+    .form-row {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .form-box {
+        width: 100%;
+    }
+}

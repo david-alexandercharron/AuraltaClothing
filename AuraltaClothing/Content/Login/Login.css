@@ -1,0 +1,134 @@
+﻿
+/* Login Form */
+.login-text {
+    font-family: MontHeavyDemo;
+    /*font-family: "Unica One","HelveticaNeue","Helvetica Neue",sans-serif;*/
+}
+
+/* Switch from Login / ForgotPassword / Register transition */
+.input-section {
+    width: 693px;
+    position: absolute;
+    transition: 0.5s;
+    left: 50px;
+}
+
+/* Medium width about */
+@media (max-width: 780px) {
+
+    .input-section {
+        width: 85%;
+    }
+}
+
+/* Phone width about */
+@media (max-width: 500px) {
+    .input-section {
+        width: 383px;
+    }
+}
+
+/* Phone width about */
+@media (max-width: 414px) {
+    .input-section {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+
+/* register section is hidden by default */
+#registerSection {
+    left: 793px; /* 793 is the maximum size of the .login-box */
+}
+
+/* forgot password section is hidden by default */
+#forgotPasswordSection {
+    top: 150px;
+    left: -793px;
+}
+
+.login-input-form {
+    margin-bottom: 50px;
+}
+
+
+/* Make the login button squared and nice */
+.btn-login {
+    border-radius: 0;
+    background: lightslategrey;
+    color: #FFFFFF;
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+/* Add border style to the text input */
+input[type="text"], input[type="password"] {
+    border: 2px solid #aaa;
+    border-radius: 0px;
+    transition: 0.3s;
+}
+
+/* On text input focus change color */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: lightslategrey;
+    box-shadow: 0 0 8px 0 lightslategrey;
+}
+
+
+/*** SOCIAL MEDIA LOGIN FORM ***/
+
+/* add appropriate colors to fb, twitter and google buttons */
+.fb {
+    background-color: #3B5998;
+    color: white;
+}
+
+.twitter {
+    background-color: #55ACEE;
+    color: white;
+}
+
+.google {
+    background-color: #dd4b39;
+    color: white;
+
+    /* Replace the col-4 class, because we don't want     
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+    */
+    max-width: 33.333333%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Opacity effect on the social media buttons */
+.btn{
+    opacity: 0.85;
+}
+
+.btn:hover {
+    opacity: 1;
+    color: #FFF;
+}
+
+
+/* This will be used for resizing the login-box with effect (sometimes will be removed) */
+.transition{
+    transition: 0.5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+﻿
+/* This is the same as .checkout-container in Checkout.css */
+.checkout-container {
+    height: 600px;
+}
+
+/* This is the same as .checkout in Checkout.css (except for background-color) */
+.checkout {
+    width: 670px;
+    height: 580px;
+    position: relative;
+    top: 55%;
+    left: 50%;
+    background-color: white;
+    overflow: hidden;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: 0 30px 48px rgba(37,44,65,0.32);
+    -moz-box-shadow: 0 30px 48px rgba(37,44,65,0.32);
+    box-shadow: 0 30px 48px rgba(37,44,65,0.32);
+}
+
+
+/* This is the same as .checkout-container in Checkout.css */
+.checkout h2 {
+    font-size: 28px;
+    letter-spacing: -2px;
+    color: #6d819c;
+    text-align: center;
+    line-height: 2.8;
+}
+
+/* Give some padding to all the form groups */
+.form-group {
+    padding: 5px 15px 5px 15px;
+
+}
+
+
+input {
+    height: 50px !important;
+}
+
+/* Responsive design for the mobile version */
+@media only screen and (max-width: 700px) {
+
+    /* Give the checkout full width on mobile */
+    .checkout {
+        width: 100%;
+    }
+}
+  
+  
+  

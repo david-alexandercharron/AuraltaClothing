@@ -1,0 +1,210 @@
+﻿@using AuraltaClothing.ViewModels.Account
+@model LoginRegisterForgotPasswordVM
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="row justify-content-md-center pt-5 pb-5 form-row">
+    <div class="col-md-auto form-box">
+
+        <!-- Login Section -->
+        <section id="loginSection" class="input-section">
+            <!-- Login title -->
+            <h1 class="text-center login-text">Login</h1>
+
+            <!-- Validation errors for the login form -->
+            @if (!Html.ViewData.ModelState.IsValid)
+            {
+                <div class="error">@Html.ValidationMessage("login")</div>
+            }
+
+            <!-- External Login form -->
+            <form action="/Account/ExternalLogin" method="post" class="row mt-5">
+
+                @Html.AntiForgeryToken()
+
+                <div class="col-12 d-flex justify-content-between">
+                    <!-- Facebook -->
+                    <button type="submit" class="fb btn col-4" id="Facebook" name="provider" value="Facebook" title="Log in using your Facebook account"><i class="fab fa-facebook fa-fw"></i> Login with Facebook</button>
+
+                    <!-- Twitter -->
+                    <button type="submit" class="twitter btn col-4 ml-1 mr-1" id="Twitter" name="provider" value="Twitter" title="Log in using your Twitter account"><i class="fab fa-twitter fa-fw"></i> Login with Twitter</button>
+
+                    <!-- Google+ -->
+                    <button type="submit" class="google btn" id="Google" name="provider" value="Google" title="Log in using your Google account"><i class="fab fa-google fa-fw"></i> Login with Google+</button>
+                </div>
+
+            </form>
+
+            <!-- Login form -->
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- Email -->
+                <div class="form-group row login-input-form">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group row login-input-form">
+                    <div class="col-md-12">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg flat-input col-12", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <!-- Sign in -->
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input type="submit" value="Sign in" class="btn btn-lg btn-block btn-secondary btn-login col-12" />
+                    </div>
+                </div>
+
+                <!-- More links -->
+                <div>
+                    <p class="text-center">
+                        <a id="loginToForgot" href="javascript:void(0)" class="text-secondary">Forgot your password?</a>
+                    </p>
+                    <p class="text-center">
+                        <a id="loginToRegister" href="javascript:void(0)" class="text-secondary">Create account</a>
+                    </p>
+                </div>
+
+            }
+        </section>
+
+        <!-- Register Section -->
+        <section id="registerSection" class="input-section">
+
+            <!-- Register title -->
+            <h1 class="text-center login-text">Register</h1>
+
+            <!-- Validation errors for the register form -->
+            @if (!Html.ViewData.ModelState.IsValid)
+            {
+                <div>
+                    <p>@Html.ValidationMessage("register")</p>
+                </div>
+            }
+
+            <!-- Register form -->
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "registerForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+
+                <!-- First Name -->
+                <div class="form-group row login-input-form">
+                    <div class="col-6">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "First name" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-6">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "Last name" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group row login-input-form">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(m => m.RegisterEmail, new { @class = "form-control form-control-lg flat-input col-12 ", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.RegisterEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group row login-input-form">
+                    <div class="col-md-12">
+                        @Html.PasswordFor(m => m.RegisterPassword, new { @class = "form-control form-control-lg flat-input col-12", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.RegisterPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Password Confirmation -->
+                <div class="form-group row login-input-form">
+                    <div class="col-md-12">
+                        @Html.PasswordFor(m => m.RegisterConfirmPassword, new { @class = "form-control form-control-lg flat-input col-12", @placeholder = "Confirm Password" })
+                        @Html.ValidationMessageFor(m => m.RegisterConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Create -->
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input id="registerButton" type="submit" value="Create" class="btn btn-lg btn-block btn-secondary btn-login col-12" />
+                    </div>
+                </div>
+
+                <!-- More links -->
+                <div>
+                    <p class="text-center">
+                        <a id="registerToLogin" href="javascript:void(0)" class="text-secondary">Sign in instead</a>
+                    </p>
+                </div>
+
+
+            }
+        </section>
+
+        <!-- Forgot Password Section -->
+        <section id="forgotPasswordSection" class="input-section">
+
+            <!-- Forgot Password title -->
+            <h1 class="text-center login-text">Forgot password</h1>
+
+
+            <!-- Forgot Password form -->
+            @using (Html.BeginForm("ForgotPassword", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- Email -->
+                <div class="form-group row login-input-form">
+                    <div class="col-md-12">
+                        <p class="text-center">
+                            Please enter your email to search for your account.
+                        </p>
+                        @Html.TextBoxFor(m => m.ForgotPasswordEmail, new { @class = "form-control form-control-lg flat-input col-12 mt-4", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.ForgotPasswordEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input type="submit" value="Search" class="btn btn-lg btn-block btn-secondary btn-login col-12" />
+                    </div>
+                </div>
+
+                <!-- More links -->
+                <div>
+                    <p class="text-center">
+                        <a id="forgotPasswordToLogin" href="javascript:void(0)" class="text-secondary">Sign in instead</a>
+                    </p>
+
+                </div>
+
+            }
+        </section>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    @Styles.Render("~/Content/Login/Login.css")
+    @Styles.Render("~/Content/Custom/CustomFormBox.css")
+    @Styles.Render("~/Content/FormValidation/FormValidation.css")
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/Javascript/Login.js")
+
+}

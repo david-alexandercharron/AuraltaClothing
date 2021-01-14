@@ -1,0 +1,67 @@
+﻿
+@using AuraltaClothing.ViewModels.Home
+@model MessageVM
+
+
+@{
+    ViewBag.Title = "Contact Us";
+}
+
+<div class="container checkout-container mb-5">
+    <div class="checkout">
+        <h2 class="text-center section-title">Message Us !</h2>
+
+        <!-- Validation errors for the login form -->
+        @if (!Html.ViewData.ModelState.IsValid)
+        {
+            <div class="error">@Html.ValidationMessage("error")</div>
+        }
+
+        <div class="container">
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="form-group col-6">
+                        @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control col-12", placeholder = "First Name" } })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-6">
+                        @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control col-12", placeholder = "Last Name" } })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-12">
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control col-12", placeholder = "Email", type = "email" } })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-12">
+                        @Html.EditorFor(m => m.Subject, new { htmlAttributes = new { @class = "form-control col-12", placeholder = "Title" } })
+                        @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-12">
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control col-12", placeholder = "Message", rows = "4" })
+                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-12">
+                        <button class="btn btn-lg btn-block btn-secondary">SUBMIT <i class="fas fa-angle-right"></i></button>
+                    </div>
+                </div>
+
+            }
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    @Styles.Render("~/Content/Home/ContactUs.css")
+    @Styles.Render("~/Content/FormValidation/FormValidation.css")
+
+    @Scripts.Render("~/bundles/jqueryval")
+}
