@@ -1,5 +1,5 @@
 # Auralta Clothing
-A startup project of a Clothing Line I've created using C# ASP.NET. Within this web application, you have the ability to create an account, add products to your cart and purchase them.
+A startup project of a Clothing Line that I have created using C# ASP.NET. Within this web application, you have the ability to create an account, add products to your cart and purchase them.
 
 # What I learned
 
